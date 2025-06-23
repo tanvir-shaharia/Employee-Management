@@ -1,0 +1,67 @@
+<%= form_with model: employee do |form| %>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :first_name, class: "mb-2" %>
+        <%= form.text_field :first_name, class: "form-control form-control-lg rounded-0" %>
+        <% @employee.errors.full_messages_for(:first_name).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :last_name, class: "mb-2" %>
+        <%= form.text_field :last_name, class: "form-control form-control-lg rounded-0" %>
+        <% @employee.errors.full_messages_for(:last_name).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :email, class: "mb-2" %>
+        <%= form.email_field :email, class: "form-control form-control-lg rounded-0" %>
+        <% @employee.errors.full_messages_for(:email).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :phone, class: "mb-2" %>
+        <%= form.number_field :phone, class: "form-control form-control-lg rounded-0" %>
+        <% @employee.errors.full_messages_for(:phone).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="form-group">
+        <%= form.label :address, class: "mb-2" %>
+        <%= form.text_field :address, class: "form-control form-control-lg rounded-0" %>
+        <% @employee.errors.full_messages_for(:address).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 mt-4 bt-5 rounded-0">
+      <%= form.submit class: "btn btn-primary rounded-0 " %>
+      <%= link_to "Back to Employees", employees_path, class: "btn btn-outline-primary rounded-0" %>
+    </div>
+  </div>
+<% end %>
