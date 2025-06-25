@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class EmployeesController < ApplicationController
+  before_action :set_employee, only: [:show, :edit, :destroy, :update]
+
   def index
     @employees = Employee.all
   end
@@ -18,15 +20,18 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee = Employee.find(params[:id])
   end
 
   def edit
-    @employee = Employee.find(params[:id])
+  end
+
+  def destroy
+    if @employee.destroy
+      redirect_to employees_path, notice: "Employee deleted successfully."
+    end
   end
 
   def update
-    @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
       redirect_to employees_path, notice: "Employee update successfully."
     else
@@ -38,6 +43,12 @@ class EmployeesController < ApplicationController
 
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :email, :phone, :address)
+  end
+
+  def set_employee
+    @employee = Employee.find(params[:id])
+  rescue ActiveRecord::ActiveRecordError => errors
+    redirect_to employees_path, notice: errors
   end
 end
 
