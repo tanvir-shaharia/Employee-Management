@@ -26,7 +26,7 @@
     <tr>
       <th>Name</th>
       <th>Doc Type</th>
-      <th>ID</th>
+      <th>Employee Name</th>
       <th>Action</th>
     </tr>
     </thead>
@@ -35,7 +35,7 @@
       <tr>
         <td><%= document.name %></td>
         <td><%= document.doc_type %></td>
-        <td><%= document.id %></td>
+        <td><%= link_to "#{document.employee.name}",employee_path(document.employee) %></td>
         <td>
           <%= link_to "View", document_path(document), class: "btn btn-outline-info btn-sm rounded-0" %>
           <%= link_to "Edit", edit_document_path(document), class: "btn btn-outline-warning btn-sm rounded-0" %>

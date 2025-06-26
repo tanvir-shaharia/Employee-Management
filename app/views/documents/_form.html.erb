@@ -1,6 +1,6 @@
 <%= form_with(model: document) do |form| %>
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <div class="form-group">
         <%= form.label :name, class: "mb-2" %>
         <%= form.text_field :name, class: "form-control form-control-lg rounded-0" %>
@@ -12,10 +12,10 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <div class="form-group">
         <%= form.label :doc_type, class: "mb-2" %>
-        <%= form.text_field :doc_type, class: "form-control form-control-lg rounded-0" %>
+        <%= form.select :doc_type,options_for_select(Document::DOC_TYPES,selected:document.doc_type),{prompt:"Select document type"},class: "form-select form-select-lg rounded-0" %>
         <% @document.errors.full_messages_for(:doc_type).each do |message| %>
           <div class="text-danger mt-1"><%= message %></div>
         <% end %>
@@ -24,10 +24,22 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       <div class="form-group">
         <%= form.label :employee_id, class: "mb-2" %>
-        <%= form.text_field :employee_id, class: "form-control form-control-lg rounded-0" %>
+        <%= form.select :employee_id,options_for_select(Employee.all.map{|employee|[employee.name_with_email,employee.id]},selected:document.employee_id),{prompt:"Select employee"} ,class: "form-select form-select-lg rounded-0" %>
+        <% @document.errors.full_messages_for(:employee_id).each do |message| %>
+          <div class="text-danger mt-1"><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="form-group">
+        <%= form.label :image , class: "mb-2" %> <br>
+        <%= form.file_field :image %>
         <% @document.errors.full_messages_for(:employee_id).each do |message| %>
           <div class="text-danger mt-1"><%= message %></div>
         <% end %>
