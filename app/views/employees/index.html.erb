@@ -1,14 +1,14 @@
 <div class="col-lg-12">
   <%= flash[:notice] %>
   <div class="card rounded-0 mt-5 mb-5">
-    <h2 class="text-center fw-bold mb-4 text-primary">All Employees</h2>
+    <h2 class="text-center fw-bold mb-4 mt-4 text-primary">All Employees</h2>
   </div>
   <div class="row mb-5">
     <div class="col-12 d-flex justify-content-between ">
       <%= link_to "Create New", new_employee_path, class: "btn btn-primary btn mb-4 rounded-0" %>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          View List
+        <button class="btn btn-primary dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Set View Type
         </button>
         <ul class="dropdown-menu">
           <li><%= link_to "Table", employees_path(view_type: "table"), class: "dropdown-item" %></li>
@@ -94,6 +94,10 @@
                       <div class="col-md-12 mb-2">
                         <strong>Address:</strong>
                         <div><%= employee.address %></div>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <strong>Designation:</strong>
+                        <div><%= employee.designation %></div>
                       </div>
                     </div>
                     <div class="text-start mt-4">
