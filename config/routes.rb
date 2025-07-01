@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
   resources :documents
-  root "home#index"
+  root "employees#index"
   resources :employees
   # public pages routes
   get "about" => "pages#about_us"

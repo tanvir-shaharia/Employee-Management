@@ -8,13 +8,13 @@
       <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "users/shared/error_messages", resource: resource %>
 
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="from-group">
+          <%= f.label :email,class:"form-label mb-2 mb-2"%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-lg" %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "Send me reset password instructions" %>
+        <div class="from-group">
+          <%= f.submit "Send me reset password instructions",class: "btn btn-primary mt-4 mb-2" %>
         </div>
       <% end %>
 
